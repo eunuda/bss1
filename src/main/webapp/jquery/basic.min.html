@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>basic_min.html</title>
+<script src="./jquery-3.6.0.min.js"></script>
+
+
+<script>
+
+   const members= [{
+
+        fullName:"김민지",
+        age:22,
+        phone: "010-1111-5678"
+  
+},{
+    fullName:"김만수",
+    age:25,
+    phone: "010-2222-5678"
+
+    
+},{
+fullName:"홍민기",
+age:27,
+phone: "010-3334-5678"
+}]
+
+
+$(document).ready(function() {
+  
+   let tbl = $('<table id ="tbl">').attr('border','1');
+ 
+ members.forEach(function(item) {
+let tr = $('<tr>').append(
+    $('<td>').text(item.fullName),
+        $('<td>').text(item.age),
+            $('<td>').text(item.phone),
+                $('<td>').html($('<button>').text('삭제').click(delFnc))
+                    );
+                    tbl.append(tr);
+                });
+               tr.mouseover(mouseOverFnc).mouseout(mouseOutFnc); 
+  tbl.append(tr);
+});
+ console.log(tbl)
+$('div').eq(1).append(tbl);
+
+function delFnc() {
+console.log(this);
+$('this').parents().parent().remove();
+
+
+}
+function mouseOverFnc() {
+console.log(this);
+$('this').css('background-color','yellow');
+}
+function mouseoutFnc() {
+console.log(this);
+$('this').css('background-color','');
+}
+
+</script>
+
+</head>
+<body>
+  
+    <div id ="show">1</div>
+    <div id ="show">2</div>
+    <div id ="show">3</div>
+    <div id ="show">4</div>
+
+</body>
+</html>
